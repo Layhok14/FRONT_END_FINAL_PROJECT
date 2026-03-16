@@ -1,3 +1,8 @@
+How to pull from file:
+git init
+git pull origin layhok
+
+Then you will get all the skeleton file from layhok
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
