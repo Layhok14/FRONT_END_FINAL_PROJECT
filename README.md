@@ -1,6 +1,6 @@
 How to pull from file:
-git init
-git pull origin layhok
+### git init
+### git pull origin layhok
 
 Then you will get all the skeleton file from layhok
 # React + Vite
