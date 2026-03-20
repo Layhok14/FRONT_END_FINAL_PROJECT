@@ -1,0 +1,44 @@
+.caregiver-card {
+  background: var(--secondary);
+  border-radius: 14px;
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 4px 16px rgba(26, 80, 137, 0.22);
+  grid-area: message;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.caregiver-avatar img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255,255,255,0.35);
+}
+
+.caregiver-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.caregiver-role {
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.65);
+  text-transform: uppercase;
+}
+
+.caregiver-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.caregiver-msg {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.82);
+}
