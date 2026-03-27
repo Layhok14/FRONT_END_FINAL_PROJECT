@@ -1,0 +1,52 @@
+.doses-card {
+  background: var(--light);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.doses-card h3 {
+  font-size: 18px;
+  margin-bottom: 16px;
+  color: var(--normal-text);
+}
+
+.dose-time-badge {
+  background: var(--near-green);
+  color: var(--secondary);
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.dose-category {
+  margin-bottom: 24px;
+}
+
+.dose-category h4 {
+  font-size: 16px;
+  margin-bottom: 12px;
+  color: var(--secondary);
+}
+
+.dose-item {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+.dose-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dose-amount {
+  font-size: 14px;
+  color: var(--normal-text);
+}
+
+.dose-remark {
+  font-size: 12px;
+  color: var(--grey);
+}

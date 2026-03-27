@@ -1,48 +1,23 @@
-import React, { useState } from "react";
-import "../../../Styling/Patient/Home/Calendar.css";
-const days = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
-const dates = [26, 27, 28, 29, 30, 31, 1];
-const todayIndex = 3; // THU = index 3
-
-// dot types: 'taken' | 'missed' | 'upcoming' | null
-const dotData = {
-  2: ["taken", "missed", "taken"],
-  3: ["taken", "upcoming"],
-  4: ["upcoming"],
-  5: ["upcoming"],
-};
+import dose_dict from "../calendar_info";
+import "../../../Styling/Patient/Calendar.css";
 
 const dotColors = {
-  taken: "#4fb3e8",
-  missed: "#e05c5c",
-  upcoming: "#1a6fa8",
+  taken: "#39ACE7",
+  taken_late: "#FF8A00",
+  missed: "#EA4B48",
+  upcoming: "#065877",
 };
+const days = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
+const dates = [18, 19, 20, 21, 22, 23, 24];
+
 
 const MedicationCalendar = () => {
-  const [view, setView] = useState("Weekly");
+  const todayIndex = 3;
 
   return (
     <div className="calendar-card">
       <div className="calendar-header">
-        <h2>Medication Calendar</h2>
-        <div className="calendar-controls">
-          <button className="arrow-btn">&#8249;</button>
-          <button className="arrow-btn">&#8250;</button>
-          <div className="view-toggle">
-            <button
-              className={view === "Weekly" ? "toggle-active" : ""}
-              onClick={() => setView("Weekly")}
-            >
-              Weekly
-            </button>
-            <button
-              className={view === "Monthly" ? "toggle-active" : ""}
-              onClick={() => setView("Monthly")}
-            >
-              Monthly
-            </button>
-          </div>
-        </div>
+        <h3>Weekly Overview</h3>
       </div>
 
       <div className="calendar-grid">
@@ -54,7 +29,7 @@ const MedicationCalendar = () => {
             <span className="day-label">{day}</span>
             <span className="day-date">{dates[i]}</span>
             <div className="day-dots">
-              {(dotData[i] || []).map((type, j) => (
+              {(dose_dict[i] || []).map((type, j) => (
                 <span
                   key={j}
                   className="dot"
@@ -62,15 +37,15 @@ const MedicationCalendar = () => {
                 />
               ))}
             </div>
-            {i === todayIndex && <span className="today-label">TODAY</span>}
           </div>
         ))}
       </div>
 
       <div className="calendar-legend">
-        <span><span className="dot" style={{ backgroundColor: "#4fb3e8" }} /> Dose Taken</span>
-        <span><span className="dot" style={{ backgroundColor: "#e05c5c" }} /> Missed Dose</span>
-        <span><span className="dot" style={{ backgroundColor: "#1a6fa8" }} /> Upcoming</span>
+        <span><span className="dost" style={{ backgroundColor: dose_dict.taken}} /> Taken</span>
+        <span><span className="dost" style={{ backgroundColor: dose_dict.taken_late}} /> Taken Late</span>
+        <span><span className="dost" style={{ backgroundColor: dose_dict.missed}} /> Missed Dose</span>
+        <span><span className="dost" style={{ backgroundColor: dose_dict.upcoming}} /> Upcoming</span>
       </div>
     </div>
   );

@@ -1,0 +1,123 @@
+.day-overview {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 22px;
+  box-shadow: var(--card-shadow);
+  margin-bottom: 20px;
+  animation: fadeInUp 0.65s ease both;
+}
+
+.day-overview__title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.day-overview__table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.day-overview__table th {
+  text-align: left;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eaf1f7;
+}
+
+.day-overview__table td {
+  padding: 10px 0;
+  font-size: 0.88rem;
+  border-bottom: 1px solid #f0f5fa;
+  color: var(--text-mid);
+}
+
+.day-overview__table td:first-child {
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.status-badge--taken    { background: #e6faf8; color: var(--teal); }
+.status-badge--upcoming { background: #eef3fa; color: var(--navy); }
+.status-badge--missed   { background: #fdeaea; color: var(--red); }
+.status-badge--late     { background: #fef4e5; color: var(--orange); }
+
+.help-bubbles {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 22px;
+  box-shadow: var(--card-shadow);
+  animation: fadeInUp 0.7s ease both;
+}
+
+.help-bubbles__label {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 14px;
+}
+
+.help-bubbles__list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.help-bubble-btn {
+  background: #e8f9f7;
+  border: none;
+  border-radius: 24px;
+  padding: 10px 18px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-dark);
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.18s, color 0.18s, transform 0.15s;
+}
+
+.help-bubble-btn:hover {
+  background: var(--teal);
+  color: white;
+  transform: translateX(4px);
+}
+
+/* FAB */
+.fab {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--red);
+  color: white;
+  border: none;
+  font-size: 1.6rem;
+  font-weight: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 18px rgba(224,82,82,0.38);
+  transition: background 0.2s, transform 0.15s;
+  z-index: 200;
+}
+
+.fab:hover {
+  background: #c94444;
+  transform: scale(1.08) rotate(45deg);
+}

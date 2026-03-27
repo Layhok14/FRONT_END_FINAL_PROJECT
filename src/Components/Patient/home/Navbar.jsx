@@ -1,5 +1,4 @@
-import React from "react";
-import "../../../Styling/Patient/Home/Navbar.css";
+import "../../../Styling/Patient/Navbar.css";
 
 const Navbar = () => {
   return (

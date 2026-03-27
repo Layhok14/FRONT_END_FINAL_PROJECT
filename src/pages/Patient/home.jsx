@@ -1,33 +1,35 @@
-import React from "react";
-import Navbar from "../../Components/Patient/home/Navbar";
-import GreetingCard from "../../Components/Patient/home/GreetingCard";
-import MedicationCalendar from "../../Components/Patient/home/Calendar";
-import QuickHealthNote from "../../Components/Patient/home/Note";
-import TodaysDoses from "../../Components/Patient/home/Dose";
-import CaregiverMessage from "../../Components/Patient/home/CaregiverMessage";
-import "../../Styling/Patient/Home/Home.css";
+import Navbar from '../../Components/Patient/Home/Navbar'
+import GreetingCard from '../../Components/Patient/Home/GreetingCard'
+import TodaysDoses from '../../Components/Patient/Home/Dose'
+import MedicationCalendar from '../../Components/Patient/Home/Calendar'
+import '../../Styling/Patient/Home.css'
 
-const Home = () => {
+const PatientHome=()=>{
   return (
-    <div className="home-page">
+    <div className="patient-home">
       <Navbar />
-      <main className="home-main">
-        <GreetingCard />
-        <QuickHealthNote />
-        <MedicationCalendar />
-        <TodaysDoses />
-        <CaregiverMessage />
-      </main>
-      <footer className="home-footer">
-        <span>© 2025 Thnam. All rights reserved.</span>
-        <div className="footer-links">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
-          <a href="#">Accessibility</a>
+      <div className="home-container">
+        <div className="main-content">
+          <div className="top-section">
+            <GreetingCard />
+            {/* <CaregiverMessage /> */}
+          </div>
+          <div className="middle-section">
+            <div className="left-column">
+              <TodaysDoses />
+            </div>
+            <div className="right-column">
+              <MedicationCalendar />
+            </div>
+          </div>
+          
+          <div className="bottom-section">
+            {/* footer maybe */}
+          </div>
         </div>
-      </footer>
+      </div>
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default PatientHome

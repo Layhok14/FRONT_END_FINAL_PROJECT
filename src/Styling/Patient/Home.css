@@ -1,0 +1,39 @@
+.patient-home {
+  min-height: 100vh;
+  background: var(--light);
+}
+
+.home-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.top-section {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+}
+
+.middle-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+@media (max-width: 768px) {
+  .top-section,
+  .middle-section {
+    grid-template-columns: 1fr;
+  }
+  
+  .home-container {
+    padding: 16px;
+  }
+}

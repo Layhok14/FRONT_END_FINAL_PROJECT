@@ -1,7 +1,5 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Link } from 'react-router-dom'
 import './App.css'
-
-// pages for routing
 import Login from './pages/Shared/login'
 import Register from './pages/Shared/register'
 import AdminHome from './Components/Admin/AdminHome'
@@ -10,11 +8,18 @@ import PatientHome from './pages/Patient/home'
 function App() {
   return (
     <>
+      <nav className="main-nav">
+        <Link to="/login">Login</Link> 
+        <Link to="/register">Register</Link> 
+        <Link to="/admin">Admin</Link> 
+        <Link to="/">Patient Home</Link>
+      </nav>
+
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/admin/*" element={<AdminHome />} />
-        <Route path="/patient/*" element={<PatientHome />} />
+        <Route path="/admin" element={<AdminHome />} />
+        <Route path="/" element={<PatientHome />} />
       </Routes>
     </>
   )
