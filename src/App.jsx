@@ -4,6 +4,7 @@ import Login from './pages/Shared/login'
 import Register from './pages/Shared/register'
 import AdminHome from './Components/Admin/AdminHome'
 import PatientHome from './pages/Patient/home'
+import Medications from './pages/Patient/medications'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/admin" element={<AdminHome />} />
         <Route path="/" element={<PatientHome />} />
+        <Route path="/medications" element={<Medications />} />
       </Routes>
     </>
   )
