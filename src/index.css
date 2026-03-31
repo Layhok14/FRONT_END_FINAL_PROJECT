@@ -1,0 +1,84 @@
+@import './App.css';
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'DM Sans', sans-serif;
+  --font-display: 'Sora', sans-serif;
+  --color-primary: #39ace7;
+  --color-primary-dark: #0d6d95;
+  --color-primary-soft: rgba(57, 172, 231, 0.12);
+  --color-surface: #ffffff;
+  --color-surface-soft: #f6fbfe;
+  --color-line: #d9e8ef;
+  --color-text-main: #16232c;
+  --color-text-soft: #5f7481;
+  --color-success: #3fae8c;
+  --color-warning: #f1a33d;
+  --color-danger: #de5f62;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: var(--font-sans);
+    background: #f7fbfd;
+    color: var(--text);
+  }
+
+  #root {
+    min-height: 100vh;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+  }
+
+  svg {
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+}
+
+
+@layer utilities {
+  .tracking-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary) transparent;
+  }
+
+  .tracking-scroll::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .tracking-scroll::-webkit-scrollbar-track {
+    background: rgba(57, 172, 231, 0.08);
+    border-radius: 999px;
+  }
+
+  .tracking-scroll::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 999px;
+  }
+}
