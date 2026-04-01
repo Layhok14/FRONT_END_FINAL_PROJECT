@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap');
+
+:root {
+  --primary: #39ace7;
+  --primary-dark: #0d6d95;
+  --primary-soft: rgba(57, 172, 231, 0.12);
+  --surface: #ffffff;
+  --surface-soft: #f6fbfe;
+  --line: #d9e8ef;
+  --text: #16232c;
+  --text-soft: #5f7481;
+  --success: #3fae8c;
+  --warning: #f1a33d;
+  --danger: #de5f62;
+  --upcoming: #0d6d95;
+  --shadow: 0 18px 46px rgba(13, 64, 88, 0.08);
+  --radius-lg: 28px;
+  --radius-md: 20px;
+  --radius-sm: 14px;
+}
