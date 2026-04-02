@@ -1,12 +1,12 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Navigate, useNavigate, useParams } from 'react-router-dom'
-import AppNavbar from '../Components/Patient/AppNavbar'
-import CheckoutModal from '../Components/Patient/CheckoutModal'
-import DayCalendar from '../Components/Patient/DayCalendar'
-import MedicationCard from '../Components/Patient/MedicationCard'
-import MedicationDetailModal from '../Components/Patient/MedicationDetailModal'
-import Modal from '../Components/Patient/Modal'
-import StatusPill from '../Components/Patient/StatusPill'
+import AppNavbar from '../components/AppNavbar'
+import CheckoutModal from '../components/CheckoutModal'
+import DayCalendar from '../components/DayCalendar'
+import MedicationCard from '../components/MedicationCard'
+import MedicationDetailModal from '../components/MedicationDetailModal'
+import Modal from '../components/Modal'
+import StatusPill from '../components/StatusPill'
 import {
   autoUpdateMissedSections,
   changePassword,
@@ -16,18 +16,21 @@ import {
   getRecordForUser,
   logoutUser,
   readAppData,
+  summarizeDayStatuses,
   updateScheduleItems,
   updateUserProfile,
   writeAppData,
-} from '../data/dose_data' //Need to update the name later
+} from '../utils/storage'
+import { formatDateKey, formatLongDate, parseDateKey } from '../utils/date'
 
-import { formatDateKey, formatLongDate, parseDateKey } from '../data/date'//This too.
 const tabs = ['home', 'medications', 'history', 'caregivers', 'settings']
+
 function getExpectedEndDate(startedDate, durationDays) {
   const date = new Date(`${startedDate}T00:00:00`)
   date.setDate(date.getDate() + Number(durationDays || 0) - 1)
   return date.toISOString().slice(0, 10)
 }
+
 function getMealSectionStatus(section) {
   const statuses = (section.phases || []).flatMap((phase) => (phase.items || []).map((item) => item.status))
   if (!statuses.length) return 'upcoming'
@@ -37,6 +40,7 @@ function getMealSectionStatus(section) {
   if (statuses.some((status) => status === 'missed')) return 'missed'
   return 'taken_late'
 }
+
 function getOverviewRows(schedule) {
   return schedule?.sections.map((section) => {
     const total = (section.phases || []).flatMap((phase) => phase.items || []).length
@@ -50,6 +54,7 @@ function getOverviewRows(schedule) {
     }
   }) || []
 }
+
 function getCurrentSectionId(schedule, selectedDate, todayDate) {
   if (!schedule) return null
   const isToday = formatDateKey(selectedDate) === formatDateKey(todayDate)
@@ -134,6 +139,7 @@ export default function DashboardPage() {
   const [passwordForm, setPasswordForm] = useState({ currentPassword: '', newPassword: '', confirmPassword: '' })
   const [now, setNow] = useState(() => new Date())
   const trackingScrollRef = useRef(null)
+
   const currentUser = useMemo(() => getCurrentUser(), [appData])
   const patient = useMemo(() => getPatientForUser(currentUser, appData), [currentUser, appData])
   const record = useMemo(() => getRecordForUser(currentUser, appData), [currentUser, appData])

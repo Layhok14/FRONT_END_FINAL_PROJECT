@@ -2,25 +2,27 @@ const STORAGE_KEY = 'thnam_app_data_v4'
 const STATUS_ORDER = ['taken', 'taken_late', 'missed', 'upcoming']
 // Todo: calculate the actual dosage.
 //This data is just to load to the local storage if the local storage doesn't exist yet. 
+
+// we need to set the category of medicines (tablets, li)
 const medicineCatalog = [
   {
     id: 'med-metformin',
     name: 'Metformin',
-    purpose: 'Blood sugar support',
+    purpose: 'Blood sugar support',//optional
     dosage: '1 pill',
     doseRemaining: 42,
-    targetStock: 60,
+    targetStock: 60,// initial stock
     frequency: 'Twice daily',
-    scheduleText: 'Before breakfast and before lunch',
-    mealPhase: 'Morning and afternoon',
-    foodTiming: '15 minutes before meal',
-    category: 'tablet',
+    scheduleText: 'Before breakfast and before lunch', //Delete
+    mealPhase: 'Morning and afternoon', // change name to section included
+    // mealPhase: before, after
+    foodTiming: '15 minutes before meal', // Delete
+    category: 'tablet', 
     imageUrl: null,
     remark: 'Put little water before taking.',
     assignedDate: '2026-05-01',
     startedDate: '2026-05-01',
-    durationDays: 45,
-    refillDate: '2026-06-10',
+    durationDays: 45, // have a function to calculate the length
     endedDate: null,
   },
   {

@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import BrandMark from '../Components/Patient/BrandMark'
-import { readAppData,resetPasswordByLocalUser,loginUser,createUser } from '../data/dose_data'
+import BrandMark from '../components/BrandMark'
+import { createUser, loginUser, readAppData, resetPasswordByLocalUser } from '../utils/storage'
 
 const roleOptions = [
   { value: 'patient', label: 'Patient' },

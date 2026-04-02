@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import BrandMark from '../Components/Patient/BrandMark'
+import BrandMark from '../components/BrandMark'
 
 const messages = [
   'Clear routines for patients, family members, and caregivers.',
