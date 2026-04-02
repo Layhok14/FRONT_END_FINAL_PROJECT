@@ -1,0 +1,30 @@
+﻿On branch master
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   index.html
+	modified:   package-lock.json
+	modified:   package.json
+	modified:   src/App.css
+	modified:   src/App.jsx
+	modified:   src/Components/Admin/AdminHome.jsx
+	deleted:    src/assets/hero.png
+	deleted:    src/assets/react.svg
+	deleted:    src/assets/vite.svg
+	modified:   src/index.css
+	modified:   vite.config.js
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	build_err.txt
+	src/Components/Admin/AddPatient.jsx
+	src/Components/Admin/AdminPatients.jsx
+	src/Components/Admin/AdminSettings.jsx
+	src/Components/Admin/AdminSidebar.jsx
+	src/Components/Admin/Inventory/
+	src/Components/Admin/NewPrescription.jsx
+	src/Home.jsx
+	src/Styling/Admin/Admin.css
+	status.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
