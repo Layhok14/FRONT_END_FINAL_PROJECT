@@ -5,6 +5,7 @@ const labels = {
   upcoming: 'Upcoming',
 }
 
+
 const classes = {
   taken: 'bg-[rgba(63,174,140,0.12)] text-success',
   taken_late: 'bg-[rgba(241,163,61,0.14)] text-warning',
