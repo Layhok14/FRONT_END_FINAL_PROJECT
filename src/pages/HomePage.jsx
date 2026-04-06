@@ -38,14 +38,13 @@ export default function HomePage() {
 
   return (
     <div className="grid gap-6 xl:grid-cols-[minmax(0,1.45fr)_minmax(300px,0.95fr)]">
-      <section className="rounded-[28px] border border-line bg-white p-5 shadow-[var(--shadow)] sm:p-6">
+      <section className="rounded-[24px] border border-line bg-white p-5 shadow-[var(--shadow)] sm:p-6">
         <div className="mb-5 flex flex-wrap items-start justify-between gap-4">
           <div>
             <h2 className="font-display text-xl font-semibold text-text-main">Tracking for your selected meal section</h2>
-            <p className="mt-1 text-sm text-text-soft">Open a medicine card to view full details, then check out the meal phase you completed today.</p>
             {selectedSection && (
-              <div className="mt-4 rounded-[18px] border border-line bg-surface-soft px-4 py-3">
-                <div className="text-sm font-semibold text-primary">
+              <div className="mt-4 pb-3">
+                <div className="text-bg font-semibold text-primary">
                   {getSectionLabel(parseDateKey(selectedDate), todayDate)}, {selectedSection.time}
                   {isSelectedToday ? (() => {
                     const countdown = formatCountdown(getSectionDateTime(selectedDate, selectedSection.time), now)
@@ -57,18 +56,18 @@ export default function HomePage() {
               </div>
             )}
           </div>
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="flex items-center gap-3">
             {isSelectedToday && selectedSectionId !== currentSectionId && currentSectionId && (
               <button type="button" className="rounded-full border border-primary px-4 py-2 text-sm font-semibold text-primary hover:bg-primary-soft" onClick={() => setSelectedSectionId(currentSectionId)}>
                 Return to current section
               </button>
             )}
-            {!isSelectedToday && <div className="rounded-full border border-line bg-white px-4 py-2 text-xs font-semibold text-text-soft">Read-only for past and future dates</div>}
+            {!isSelectedToday && <div className="rounded-full border border-line bg-white px-4 py-2 text-xs font-semibold text-text-soft">Read-only</div>}
           </div>
         </div>
 
         {selectedSection ? (
-          <div className="rounded-[24px] border border-line bg-surface-soft p-4 sm:p-5">
+          <div className="rounded-[24px] sm:p-3">
             <div className="relative">
               <div
                 ref={trackingScrollRef}
@@ -78,9 +77,9 @@ export default function HomePage() {
                   const hasTwoColumns = phase.items.length > 1
                   return (
                     <div key={phase.id} className="rounded-[22px] border border-line bg-white p-4">
-                      <div className="rounded-[18px] border border-line bg-surface-soft px-4 py-3">
-                        <div className="text-sm font-semibold text-primary">{phase.title}</div>
-                        <div className="mt-1 text-sm text-text-soft">{phase.note}</div>
+                      <div className=" px-4 py-3">
+                        <div className="text-medium font-semibold text-primary">{phase.title}</div>
+              
                       </div>
 
                       <div className={`mt-4 grid gap-4 ${hasTwoColumns ? 'md:grid-cols-2' : 'grid-cols-1'}`}>
@@ -141,10 +140,9 @@ export default function HomePage() {
               const isSelected = row.id === selectedSectionId
               const isCurrent = isSelectedToday && row.id === currentSectionId
               return (
-                <button key={row.id} type="button" onClick={() => setSelectedSectionId(row.id)} className={`grid w-full grid-cols-[0.8fr_1fr_0.65fr] items-center gap-3 rounded-[18px] border px-4 py-3 text-left text-sm transition ${isSelected ? 'border-primary bg-primary-soft/70' : 'border-line hover:border-primary/50'}`}>
-                  <div>
-                    <div className="font-medium text-text-main">{row.time}{row.countdown ? ` (${row.countdown})` : ''}</div>
-                    <div className="text-xs text-text-soft">{row.title}</div>
+                <button key={row.id} type="button" onClick={() => setSelectedSectionId(row.id)} className={`grid w-full grid-cols-[0.8fr_1fr_0.65fr] items-center gap-3 rounded-[18px] border px-4 py-5 text-left text-sm transition ${isSelected ? 'border-primary bg-primary-soft/70' : 'border-line hover:border-primary/50'}`}>
+                  <div className='flex'>   
+                    <div className="font-bold text-text-main">{row.time}</div>
                   </div>
                   <div className="flex items-center gap-2">
                     <StatusPill status={row.status} />

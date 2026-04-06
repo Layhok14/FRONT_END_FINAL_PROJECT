@@ -42,6 +42,12 @@ export default function DashboardLayout() {
   const [historySearch, setHistorySearch] = useState('')
   const [historyTypeFilter, setHistoryTypeFilter] = useState('all')
   const [historyMode, setHistoryMode] = useState('records')
+  const [historyCalendarMonth, setHistoryCalendarMonth] = useState(() => {
+    const date = new Date()
+    const year = date.getFullYear()
+    const month = String(date.getMonth() + 1).padStart(2, '0')
+    return `${year}-${month}`
+})
   const [notificationsOpen, setNotificationsOpen] = useState(false)
   const [recordModalDateKey, setRecordModalDateKey] = useState(null)
   const [caregiverMessagesOpen, setCaregiverMessagesOpen] = useState(null)
@@ -207,6 +213,8 @@ export default function DashboardLayout() {
     filteredActiveMedications,
     filteredPastMedications,
     historyMode,
+    historyCalendarMonth,
+    setHistoryCalendarMonth,
     historySearch,
     historyTypeFilter,
     isSelectedToday,

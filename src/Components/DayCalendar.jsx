@@ -23,7 +23,6 @@ export default function DayCalendar({ selectedDate, today, getDotsForDate, onCha
   const [pickerValue, setPickerValue] = useState(formatDateKey(selectedDate))
 
   useEffect(() => {
-    setWeekAnchor(selectedDate)
     setPickerValue(formatDateKey(selectedDate))
   }, [selectedDate])
 
@@ -38,6 +37,7 @@ export default function DayCalendar({ selectedDate, today, getDotsForDate, onCha
             <h3 className="font-display text-lg font-semibold text-text-main">Weekly Overview</h3>
             <p className="text-sm text-text-soft">Today shows all 3 meal sections. Other dates stay softer until selected.</p>
           </div>
+
           <div className="flex flex-wrap items-center gap-2">
             <button
               type="button"
@@ -46,6 +46,7 @@ export default function DayCalendar({ selectedDate, today, getDotsForDate, onCha
             >
               {formatMonthLabel(weekDates[0])}
             </button>
+
             <button
               type="button"
               className="flex h-9 w-9 items-center justify-center rounded-full border border-line text-text-soft hover:border-primary hover:text-primary"
@@ -57,6 +58,7 @@ export default function DayCalendar({ selectedDate, today, getDotsForDate, onCha
             >
               <ChevronLeftIcon />
             </button>
+
             <button
               type="button"
               className="flex h-9 w-9 items-center justify-center rounded-full border border-line text-text-soft hover:border-primary hover:text-primary"
@@ -85,51 +87,108 @@ export default function DayCalendar({ selectedDate, today, getDotsForDate, onCha
                 key={dateKey}
                 type="button"
                 onClick={() => onChangeDate(date)}
-                className={`rounded-[20px] border px-2 py-3 text-center transition ${isSelected ? (isToday ? 'border-primary bg-primary text-white shadow-sm' : 'border-primary bg-primary-soft/70 text-primary-dark') : isToday ? 'border-primary bg-primary-soft text-primary-dark shadow-sm' : isFuture ? 'border-line bg-surface-soft/60 text-text-main hover:border-primary/50' : 'border-line bg-surface-soft/70 text-text-main hover:border-primary/50'}`}
+                className={`rounded-[20px] border px-2 py-3 text-center transition ${
+                  isSelected
+                    ? isToday
+                      ? 'border-primary bg-primary text-white shadow-sm'
+                      : 'border-primary bg-primary-soft/70 text-primary-dark'
+                    : isToday
+                      ? 'border-primary bg-primary-soft text-primary-dark shadow-sm'
+                      : isFuture
+                        ? 'border-line bg-surface-soft/60 text-text-main hover:border-primary/50'
+                        : 'border-line bg-surface-soft/70 text-text-main hover:border-primary/50'
+                }`}
               >
-                <div className={`text-[11px] font-semibold ${isSelected ? (isToday ? 'text-white/90' : 'text-primary-dark') : 'text-text-soft'}`}>{formatShortDay(date).toUpperCase()}</div>
-                <div className={`mt-2 text-xl font-semibold ${!isToday && !isSelected ? 'opacity-70' : ''}`}>{date.getDate()}</div>
+                <div className={`text-[11px] font-semibold ${
+                  isSelected
+                    ? isToday
+                      ? 'text-white/90'
+                      : 'text-primary-dark'
+                    : 'text-text-soft'
+                }`}>
+                  {formatShortDay(date).toUpperCase()}
+                </div>
+
+                <div className={`mt-2 text-xl font-semibold ${!isToday && !isSelected ? 'opacity-70' : ''}`}>
+                  {date.getDate()}
+                </div>
+
                 <div className="mt-3 flex min-h-4 items-center justify-center gap-1">
-                  {visibleDots.length ? visibleDots.map((status, index) => (
-                    <span
-                      key={`${status}-${index}`}
-                      className={`h-2 w-2 rounded-full ${isSelected ? (isToday ? 'bg-white' : 'bg-primary') : dotClassMap[status]} ${!isToday && !isSelected ? 'opacity-40' : ''}`}
-                    />
-                  )) : <span className={`text-[10px] ${isSelected ? (isToday ? 'text-white/90' : 'text-primary-dark') : 'text-text-soft'}`}>No data</span>}
+                  {visibleDots.length ? (
+                    visibleDots.map((status, index) => (
+                      <span
+                        key={`${status}-${index}`}
+                        className={`h-2 w-2 rounded-full ${
+                          isSelected
+                            ? isToday
+                              ? 'bg-white'
+                              : 'bg-primary'
+                            : dotClassMap[status]
+                        } ${!isToday && !isSelected ? 'opacity-40' : ''}`}
+                      />
+                    ))
+                  ) : (
+                    <span className={`text-[10px] ${
+                      isSelected
+                        ? isToday
+                          ? 'text-white/90'
+                          : 'text-primary-dark'
+                        : 'text-text-soft'
+                    }`}>
+                      No data
+                    </span>
+                  )}
                 </div>
               </button>
             )
           })}
         </div>
 
-        <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
+        <div className="mt-4 grid min-h-[56px] gap-3 md:grid-cols-[minmax(0,1fr)_auto] md:items-center">
           <div className="flex flex-wrap gap-4 text-xs text-text-soft">
             <span className="flex items-center gap-2"><i className="h-2 w-2 rounded-full bg-success" />Taken</span>
             <span className="flex items-center gap-2"><i className="h-2 w-2 rounded-full bg-warning" />Taken late</span>
             <span className="flex items-center gap-2"><i className="h-2 w-2 rounded-full bg-danger" />Missed</span>
             <span className="flex items-center gap-2"><i className="h-2 w-2 rounded-full bg-primary-dark" />Upcoming</span>
           </div>
-          {!selectedIsToday && (
-            <button type="button" className="rounded-full border border-primary px-4 py-2 text-sm font-semibold text-primary hover:bg-primary-soft" onClick={onReturnToToday}>
+
+          <div className="flex h-[40px] items-center justify-start md:justify-end">
+            <button
+              type="button"
+              onClick={() => {
+                setWeekAnchor(today)
+                onReturnToToday()
+              }}
+              className={`rounded-full border border-primary px-4 py-2 text-sm font-semibold text-primary hover:bg-primary-soft ${
+                selectedIsToday ? 'invisible pointer-events-none' : ''
+              }`}
+            >
               Return to today
             </button>
-          )}
+          </div>
         </div>
       </section>
 
       <Modal open={pickerOpen} onClose={() => setPickerOpen(false)} title="Choose a date">
         <div className="space-y-4">
-          <p className="text-sm leading-6 text-text-soft">Scroll and pick any date to jump directly to that month and day.</p>
+          <p className="text-sm leading-6 text-text-soft">Scroll and pick any date to jump directly to that week.</p>
+
           <input
             type="date"
             value={pickerValue}
             onChange={(event) => setPickerValue(event.target.value)}
             className="w-full rounded-2xl border border-line px-4 py-3 outline-none focus:border-primary"
           />
+
           <div className="flex justify-end gap-3">
-            <button type="button" className="rounded-full border border-line px-4 py-2 text-sm font-semibold text-text-main" onClick={() => setPickerOpen(false)}>
+            <button
+              type="button"
+              className="rounded-full border border-line px-4 py-2 text-sm font-semibold text-text-main"
+              onClick={() => setPickerOpen(false)}
+            >
               Cancel
             </button>
+
             <button
               type="button"
               className="rounded-full bg-primary px-5 py-2 text-sm font-semibold text-white hover:bg-primary-dark"
@@ -137,11 +196,10 @@ export default function DayCalendar({ selectedDate, today, getDotsForDate, onCha
                 if (!pickerValue) return
                 const nextDate = new Date(`${pickerValue}T00:00:00`)
                 setWeekAnchor(nextDate)
-                onChangeDate(nextDate)
                 setPickerOpen(false)
               }}
             >
-              View date
+              View week
             </button>
           </div>
         </div>
